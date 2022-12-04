@@ -13,20 +13,7 @@ import { BiSearch } from 'react-icons/bi'
 
 
 
-export default function Navbar({ url, cart }) {
-
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        axios.get(url + 'products/getcategories.php')
-            .then((response) => {
-                const json = response.data;
-                setCategories(json);
-                console.log(json);
-            }).catch(error => {
-                alert(error.response === undefined ? error : error.response.data.error);
-            })
-    }, [])
+export default function Navbar({ cart, categories }) {
 
     return (
 

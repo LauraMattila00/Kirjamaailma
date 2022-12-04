@@ -8,17 +8,20 @@ import maol from '../components/maol.jpg'
 import alias from '../components/alias.jpg'
 import auroranS from '../components/auroranS.jpg'
 import CustomCarousel from '../components/carousel'
+import Category from '../components/Category'
 
 const images = [books, shelf, reading]
 
-export default function Home() {
+export default function Home({categories}) {
+    const categoryItems = categories.map(product => (
+        <Category categoryName={product.trnimi}/>
+    )
+        )
     return (
+        <>
         <CustomCarousel images={images}/>
-
-
-
-
-
+        {categoryItems}
+        </>
     )
 
 }

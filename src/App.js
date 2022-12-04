@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import axios from "axios";
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -16,6 +16,18 @@ const URL = 'http://localhost/kirjamaailma/';
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        axios.get(URL + 'products/getcategories.php')
+            .then((response) => {
+                const json = response.data;
+                setCategories(json);
+                console.log(json);
+            }).catch(error => {
+                alert(error.response === undefined ? error : error.response.data.error);
+            })
+    }, [])
 
   function addToCart(product) {
     const newCart = [...cart, product];
@@ -26,9 +38,9 @@ function App() {
     <>
       <div className='container-fluid'>
         <Header />
-        <Navbar url={URL} cart={cart} />
+        <Navbar cart={cart} categories={categories} />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home categories={categories}/>} />
           <Route path='/products/:categoryId' element={<Products url={URL} />} />
           <Route path='/tuotesivu' element={<Tuotesivu addToCart={addToCart}/>} />
           <Route path='/about' element={<About />} />
