@@ -35,17 +35,3 @@ export default function Products({ url, addToCart }) {
     </section>
   )
 };
-
-//<button className='btn btn-primary' type="button" onClick={e => addToCart(product)}>Lisää ostoskoriin</button> (tuotteen jälkeen)
-
-/*   return (
-  <div>
-  <h3>{category}</h3>
-  {products.map(product => (
-    <div key={product.tuotenro}>
-      {product.tuotenimi}
-        </div>
-      ))}
-    </div>
-  ) */
-
