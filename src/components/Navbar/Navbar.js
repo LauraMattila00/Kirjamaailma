@@ -22,8 +22,8 @@ export default function Navbar1({ cart, categories }) {
                             {categories.map(category => (
                                 <NavDropdown.Item href={'/products/' + category.trnro}>{category.trnimi}</NavDropdown.Item>))}
                         </NavDropdown>
-                        <Nav.Link href="/order"><Cart cart={cart} />  Ostoskori</Nav.Link>
-                        <Nav.Link href="/login"><FiLogIn />  Kirjaudu</Nav.Link>
+                        <Nav.Link className="nav-link" href="/order"><Cart cart={cart} />  Ostoskori</Nav.Link>
+                        <Nav.Link className="nav-link" href="/login"><FiLogIn />  Kirjaudu</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control

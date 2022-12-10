@@ -7,13 +7,13 @@ import './card.css'
 
 export default function ProductCard ({url, product, addToCart}) {
   return (
-    <Card>
+    <Card className="card">
       <Card.Img className="card-img" variant="top" src={url + 'images/' + product.trnro + '/' + product.kuva} />
       <Card.Body className="card-body">
         <Card.Title>{product.tuotenimi}</Card.Title>
         <Card.Text>{product.hinta}  €</Card.Text>
-        <Button variant="secondary"><Link to={"/tuotesivu/" + product.tuotenro}>Lisätiedot</Link></Button>
-        <Button variant="secondary" onClick={() => addToCart(product)}><HiOutlineShoppingCart/>  Lisää ostoskoriin</Button>
+        <Button variant="dark"><Link to={"/tuotesivu/" + product.tuotenro} className="nav-link">Lisätiedot</Link></Button>
+        <Button variant="dark" onClick={() => addToCart(product)}><HiOutlineShoppingCart/>  Lisää ostoskoriin</Button>
       </Card.Body>
     </Card>
   );
