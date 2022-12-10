@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './navbar.css'
-import Cart from './Cart';
+import Cart from '../Cart';
 
 import { FiLogIn } from 'react-icons/fi';
 import { BiSearch } from 'react-icons/bi'
