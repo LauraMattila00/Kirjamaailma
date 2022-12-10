@@ -1,6 +1,6 @@
 
 import { Carousel } from 'react-bootstrap';
-import "./carousel.css"
+import "./carousel.css" 
 
 const CustomCarousel = (props) => {
     const {images}=props

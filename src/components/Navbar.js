@@ -14,9 +14,7 @@ import { BiSearch } from 'react-icons/bi'
 
 
 export default function Navbar({ cart, categories }) {
-
     return (
-
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">Etusivu</Link>
@@ -34,7 +32,7 @@ export default function Navbar({ cart, categories }) {
                     <div className="offcanvas-body">
                         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><BiCategory/> Tuotteet</a>
+                                <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><BiCategory /> Tuotteet</a>
                                 <ul className="dropdown-menu">
                                     {categories.map(category => (
                                         <li key={category.trnro}>
@@ -43,27 +41,23 @@ export default function Navbar({ cart, categories }) {
                                                 to={'/products/' + category.trnro}>{category.trnimi}
                                             </Link>}
                                         </li>
-                                    ))}
-                                    <li>
-                                        <hr className="dropdown-divider" />
-                                    </li>
-                                    <li><Link className="dropdown-item"  to="">Kaikki tuotteet</Link></li>
+                                    ))} 
                                 </ul>
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/Cart"> <Cart cart={cart}/>&nbsp;&nbsp;Ostoskori</Link>
+                                <Link className="nav-link active" aria-current="page" to="/Order"> <Cart cart={cart} />&nbsp;&nbsp;Ostoskori</Link>
                             </li>
 
                             <div className='nav-item'>
-                                <Link className='nav-link active' aria-current="page" to="/login"><i className='fa fa-sign-in me-1'></i> <FiLogIn/>   Kirjaudu</Link>
+                                <Link className='nav-link active' aria-current="page" to="/login"><i className='fa fa-sign-in me-1'></i> <FiLogIn />   Kirjaudu</Link>
                             </div>
 
                         </ul>
                         <form className="d-flex mt-3 mt-lg-0" role="search">
 
                             <input className="form-control me-2" type="search" placeholder="Hae kaupasta.." aria-label="Search" id="öö" />
-                            <button className="btn btn-outline-light" type="submit"><BiSearch/></button>
+                            <button className="btn btn-outline-light" type="submit"><BiSearch /></button>
                         </form>
                     </div>
                 </div>

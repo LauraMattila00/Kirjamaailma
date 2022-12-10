@@ -1,0 +1,12 @@
+#products {
+    height: 250px;
+    width: 100%;
+} 
+
+.btn {
+    margin-bottom: 10px;
+}
+
+#products-col {
+    height: 550px;
+} 
