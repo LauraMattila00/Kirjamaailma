@@ -1,13 +1,9 @@
 import React from 'react'
 import '../components/pages.css'
-import books from '../components/books.jpg'
-import glass from '../components/glass.jpg'
-import shelf from '../components/shelf.jpg'
-import reading from '../components/reading.jpg'
-import maol from '../components/maol.jpg'
-import alias from '../components/alias.jpg'
-import auroranS from '../components/auroranS.jpg'
-import CustomCarousel from '../components/carousel'
+import books from '../components/Images/books.jpg'
+import shelf from '../components/Images/shelf.jpg'
+import reading from '../components/Images/reading.jpg'
+import CustomCarousel from '../components/Carousel/carousel'
 import Category from '../components/Category'
 
 const images = [books, shelf, reading]

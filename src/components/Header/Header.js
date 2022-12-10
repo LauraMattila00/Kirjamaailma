@@ -1,6 +1,6 @@
 import React from 'react'
 import './header.css'
-import kirjamaailmalogo from './kirjamaailmalogo.png'
+import kirjamaailmalogo from '../Images/kirjamaailmalogo.png'
 
 export default function Header() {
   return (
