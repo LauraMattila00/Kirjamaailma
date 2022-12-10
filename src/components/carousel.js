@@ -8,8 +8,8 @@ const CustomCarousel = (props) => {
     <h5>Joulu lähestyy!</h5>
     <p>Hanki nyt joulun toivotuimmat kirjalahjat pukinkonttiin.</p>
   </Carousel.Caption>
-    const carouselItems = images.map(image =>(
-        <Carousel.Item>
+    const carouselItems = images.map((image, index) =>(
+        <Carousel.Item key={index}>
         <img
           className="d-block w-100 image"
           src={image}

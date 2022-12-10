@@ -14,7 +14,7 @@ const images = [books, shelf, reading]
 
 export default function Home({categories}) {
     const categoryItems = categories.map(product => (
-        <Category categoryName={product.trnimi}/>
+        <Category key={product.trnro} categoryName={product.trnimi}/>
     )
         )
     return (
