@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import '../components/tuotesivu.css';
 
 
 export default function Tuotesivu({ addToCart, url }) {
