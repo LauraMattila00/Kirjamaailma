@@ -61,7 +61,7 @@ function App() {
           <Route path='/' element={<Home categories={categories}/>} />
           <Route path='/products/:categoryId' element={<Products url={URL} addToCart={addToCart} />} />
           <Route path='/tuotesivu/:productId' element={<Tuotesivu url={URL} addToCart={addToCart}/>} />
-          <Route path='/order' element={<Order cart={cart} removeFromCart={removeFromCart}/>} />
+          <Route path='/order' element={<Order url={URL} cart={cart} removeFromCart={removeFromCart}/>} />
           <Route path='*' element={<NotFound />} />  
           <Route path='/login' element={<Login url={URL}/>} />
           <Route path='/signup' element={<Signup url={URL}/>} />
