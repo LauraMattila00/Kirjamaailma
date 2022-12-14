@@ -10,6 +10,9 @@ import Products from './pages/Products';
 import Tuotesivu from './pages/tuotesivu';
 import Order from './pages/Order';
 import NotFound from './pages/NotFound';
+import Login from './pages/login';
+import Signup from './pages/Signup';
+import Logout from './pages/Logout';
 
 
 // Kirjamaailma
@@ -60,6 +63,8 @@ function App() {
           <Route path='/tuotesivu/:productId' element={<Tuotesivu url={URL} addToCart={addToCart}/>} />
           <Route path='/order' element={<Order cart={cart} removeFromCart={removeFromCart}/>} />
           <Route path='*' element={<NotFound />} />  
+          <Route path='/login' element={<Login url={URL}/>} />
+          <Route path='/signup' element={<Signup url={URL}/>} />
         </Routes>
         <Footer />
 

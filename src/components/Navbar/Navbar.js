@@ -9,6 +9,7 @@ import Cart from '../Cart';
 
 import { FiLogIn } from 'react-icons/fi';
 import { BiSearch } from 'react-icons/bi'
+import {GiArchiveRegister} from 'react-icons/gi'
 
 export default function Navbar1({ cart, categories }) {
     return (
@@ -23,7 +24,8 @@ export default function Navbar1({ cart, categories }) {
                                 <NavDropdown.Item href={'/products/' + category.trnro}>{category.trnimi}</NavDropdown.Item>))}
                         </NavDropdown>
                         <Nav.Link className="nav-link" href="/order"><Cart cart={cart} />  Ostoskori</Nav.Link>
-                        <Nav.Link className="nav-link" href="/login"><FiLogIn />  Kirjaudu</Nav.Link>
+                        <Nav.Link className="nav-link" href="/login"><FiLogIn/>Kirjaudu</Nav.Link>
+                        <Nav.Link className="nav-link" href="/signup"><GiArchiveRegister/> Rekisteröidy</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios';
 
 
@@ -12,7 +11,7 @@ export default function Register({setUser}){
   function register(e){
     const json ={username, email, password}; // same as {uname:unmae, pw:pw}
 
-    // sending form data to server register withcred.. is 
+    // sending form data to server register withcred.. 
     //sucessful response set
 
 
@@ -23,11 +22,11 @@ export default function Register({setUser}){
   return(
     <form>
       <label>Username:</label>
-      <input type="text"defaultValue={username}OnChange={e=>setUsername(e.target.value)}/><br/>
+      <input type="text"defaultValue={username}OnChange={e=>setUsername(e.target.value)}/><br></br>
       <label>Email:</label>
-      <input type="email" defaultValue={email}OnChange={e=>setEmail(e.target.value)}/>
+      <input type="email" defaultValue={email}OnChange={e=>setEmail(e.target.value)}/><br></br>
       <label>Password:</label>
-      <input type="password" defaultValue={password}OnChange={e=>setPassword(e.target.value)}/>
+      <input type="password" defaultValue={password}OnChange={e=>setPassword(e.target.value)}/><br></br>
       <button type="button" onClick={register}>Register</button>
     </form>
   )}
