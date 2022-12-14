@@ -3,7 +3,7 @@ import uuid from 'react-uuid';
 
 // AJA KOODI: npm i react-uuid
 
-export default function Order({cart, removeFromCart}) {
+export default function Order({url, cart, removeFromCart}) {
   
 
   let sum = 0;
@@ -20,6 +20,7 @@ export default function Order({cart, removeFromCart}) {
             sum+=parseFloat(product.hinta);
             return (
               <tr key={uuid()}>
+                <td><img src={url + 'images/' + product.trnro + '/' + product.kuva} style={{width: "50px"}}/></td>
                 <td>{product.tuotenimi}</td>
                 <td>{product.hinta} €</td>
                 <td><a href="#" onClick={() => removeFromCart(product.tuotenro)}>Poista tuote ostoskorista</a></td>
