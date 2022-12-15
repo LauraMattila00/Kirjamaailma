@@ -1,10 +1,11 @@
 
-
+import './category.css'
 
 const Category = props => {
-    const {categoryName}=props;
-    return <div>
-        {categoryName}
+    const { categoryName, icon, trnro } = props;
+    return <div className='category'>
+        {icon}
+        <a href={'/products/' + trnro}>{categoryName}</a>
     </div>
 }
 
