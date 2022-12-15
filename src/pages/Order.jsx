@@ -35,7 +35,7 @@ export default function Order({url, cart, removeFromCart, updateAmount}) {
       <table className="table">
         <tbody>
           {cart.map((product,index) => {
-            sum+=parseFloat(product.hinta);
+            sum+=parseFloat(product.hinta * product.amount);
             return (
               <tr key={uuid()}>
                 <td><img src={url + 'images/' + product.trnro + '/' + product.kuva} style={{width: "50px"}}/></td>
