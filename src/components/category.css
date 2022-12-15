@@ -1,13 +1,11 @@
-.category {
+.category>a {
+    text-decoration: none;
+    color: inherit;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.category > a {
-    text-decoration: none;
-    color: inherit;
 }
 
 .myCategory {
