@@ -10,6 +10,9 @@ import Products from './pages/Products';
 import Tuotesivu from './pages/tuotesivu';
 import Order from './pages/Order';
 import NotFound from './pages/NotFound';
+import Login from './pages/login';
+import Signup from './pages/Signup';
+import Logout from './pages/Logout';
 
 
 // Kirjamaailma
@@ -38,15 +41,29 @@ function App() {
   
 
   function addToCart(product) {
+    if (cart.some(item => item.tuotenro === product.tuotenro)) {
+      const existingProduct = cart.filter(item => item.tuotenro ===product.tuotenro);
+      updateAmount(parseInt(existingProduct[0].amount) + 1,product);
+    } else {
+    product['amount'] = 1;
     const newCart = [...cart, product];
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
+    }
   }
 
   function removeFromCart(product) {
     const itemsWithoutRemoved = cart.filter(item => item.id !== product.id);
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
+  }
+
+  function updateAmount(amount,product) {
+    product.amount = amount;
+    const index = cart.findIndex((item => item.tuotenro === product.tuotenro));
+    const modifiedCart = Object.assign([...cart],{[index]: product});
+    setCart(modifiedCart);
+    localStorage.setItem('cart',JSON.stringify(modifiedCart));
   }
 
   return (
@@ -58,8 +75,10 @@ function App() {
           <Route path='/' element={<Home categories={categories}/>} />
           <Route path='/products/:categoryId' element={<Products url={URL} addToCart={addToCart} />} />
           <Route path='/tuotesivu/:productId' element={<Tuotesivu url={URL} addToCart={addToCart}/>} />
-          <Route path='/order' element={<Order cart={cart} removeFromCart={removeFromCart}/>} />
+          <Route path='/order' element={<Order url={URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount}/>} />
           <Route path='*' element={<NotFound />} />  
+          <Route path='/login' element={<Login url={URL}/>} />
+          <Route path='/signup' element={<Signup url={URL}/>} />
         </Routes>
         <Footer />
 
