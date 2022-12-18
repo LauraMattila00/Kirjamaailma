@@ -44,7 +44,7 @@ export default function Order({url, cart, removeFromCart, updateAmount}) {
                 <td>
                 <input ref={inputs[index]} style={{width: '60px'}} value={product.amount} onChange={e => changeAmount(e,product,index)} />
                 </td>
-                <td><a href="#" onClick={() => removeFromCart(product.tuotenro)}>Poista tuote ostoskorista</a></td>
+                <td><a href="#" onClick={() => removeFromCart(product)}>Poista tuote ostoskorista</a></td>
               </tr>
             )
             })}

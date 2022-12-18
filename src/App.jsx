@@ -53,7 +53,7 @@ function App() {
   }
 
   function removeFromCart(product) {
-    const itemsWithoutRemoved = cart.filter(item => item.id !== product.id);
+    const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
