@@ -9,7 +9,7 @@ import Cart from '../Cart';
 
 import { FiLogIn } from 'react-icons/fi';
 import { BiSearch } from 'react-icons/bi'
-import {GiArchiveRegister} from 'react-icons/gi'
+import { GiArchiveRegister } from 'react-icons/gi'
 
 export default function Navbar1({ cart, categories }) {
     return (
@@ -18,14 +18,15 @@ export default function Navbar1({ cart, categories }) {
                 <Navbar.Brand href="/">Kirjamaailma</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
-                    <Nav className="me-auto my-2 my-lg-0"navbarScroll>
+                    <Nav className="me-auto my-2 my-lg-0" navbarScroll>
                         <NavDropdown title="Tuotteet" id="navbarScrollingDropdown">
                             {categories.map(category => (
                                 <NavDropdown.Item href={'/products/' + category.trnro}>{category.trnimi}</NavDropdown.Item>))}
                         </NavDropdown>
                         <Nav.Link className="nav-link" href="/order"><Cart cart={cart} />  Ostoskori</Nav.Link>
-                        <Nav.Link className="nav-link" href="/login"><FiLogIn/>Kirjaudu</Nav.Link>
-                        <Nav.Link className="nav-link" href="/signup"><GiArchiveRegister/> Rekisteröidy</Nav.Link>
+                        <Nav.Link className="nav-link" href="/login"><FiLogIn />Kirjaudu</Nav.Link>
+                        <Nav.Link className="nav-link" href="/signup"><GiArchiveRegister /> Rekisteröidy</Nav.Link>
+                        <Nav.Link className="nav-link" href="/admin">Ylläpito</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control
