@@ -5,6 +5,10 @@
 }
   .carousel-inner, .carousel-item { width:1250px; height:700px; }
 
+  #tuotekuva {
+    width: 70%;
+  }
+
   
   .product1, .product2
        * {
