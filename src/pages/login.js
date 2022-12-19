@@ -6,12 +6,12 @@ import axios from 'axios';
 const URL="http://localhost/kirjamaailma/"
 
   
-  export default function LoginApp(URL){
+  export default function LoginApp(){
     const[loggedUser, setLoggedUser]=useState(null);
    
   
     useEffect(()=>{
-      axios.post(URL+"login.php", {}, {withCredentials:true})
+      axios.post( URL+"register/login.php", {}, {withCredentials:true})
         .then(resp => setLoggedUser(resp.data))
         .catch(e => console.log(e.message));
     }, [])
@@ -36,7 +36,7 @@ const URL="http://localhost/kirjamaailma/"
         formData.append=("password", password);
        
   
-        axios.post(URL+"login.php", formData, {withCredentials:true})
+        axios.post(URL+"register/login.php", formData, {withCredentials:true})
           .then(resp => setLoggedUser(resp.data))
           .catch(e=>console.log(e.message));
       }
