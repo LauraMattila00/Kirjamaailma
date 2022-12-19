@@ -8,7 +8,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Cart from '../Cart';
 import './navbar.css'
 import { FiLogIn } from 'react-icons/fi';
-import { BiSearch } from 'react-icons/bi'
 import {GiArchiveRegister} from 'react-icons/gi'
 import { useState } from 'react';
 
@@ -49,7 +48,6 @@ export default function Navbar1({ cart, categories }) {
                             className="me-2"
                             aria-label="Search"
                         />
-                        <Button variant="outline-dark"><BiSearch /></Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>
