@@ -4,14 +4,26 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import './navbar.css'
+import { Link, useNavigate } from 'react-router-dom';
 import Cart from '../Cart';
-
+import './navbar.css'
 import { FiLogIn } from 'react-icons/fi';
 import { BiSearch } from 'react-icons/bi'
 import {GiArchiveRegister} from 'react-icons/gi'
+import { useState } from 'react';
 
 export default function Navbar1({ cart, categories }) {
+
+    const [search, setSearch] = useState('');
+    const navigate = useNavigate();
+
+    function Search (e) {
+        if (e.charCode === 13) {
+            e.preventDefault();
+            navigate('/search/' + search);
+        }
+    }
+
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
@@ -30,6 +42,9 @@ export default function Navbar1({ cart, categories }) {
                     <Form className="d-flex">
                         <Form.Control
                             type="search"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            onKeyPress={(e) => Search(e)}
                             placeholder="Etsi kaupasta..."
                             className="me-2"
                             aria-label="Search"
