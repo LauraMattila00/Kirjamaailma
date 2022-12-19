@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import '../components/pages.css'
 
 
 export default function Tuotesivu({ addToCart, url }) {
@@ -33,7 +34,7 @@ export default function Tuotesivu({ addToCart, url }) {
                                     <div className="fs-5 mb-5">
                                         <span>{product.hinta}€</span>
                                     </div>
-                                    <p className="lead">{/* Kirjoitetaanko tähän jotakin tekstiä? */}</p>
+                                    <p className="lead">{product.teksti}</p>
                                     <div className="d-flex">
                                         <input className="form-control text-center me-3" id="inputQuantity" type="num" value="1" style={{ maxwidth: "3rem" }} />
                                         <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={e => addToCart(product)}>

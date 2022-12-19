@@ -35,7 +35,7 @@ export default function Order({url, cart, removeFromCart, updateAmount}) {
       <table className="table">
         <tbody>
           {cart.map((product,index) => {
-            sum+=parseFloat(product.hinta);
+            sum+=parseFloat(product.hinta * product.amount);
             return (
               <tr key={uuid()}>
                 <td><img src={url + 'images/' + product.trnro + '/' + product.kuva} style={{width: "50px"}}/></td>
@@ -44,7 +44,7 @@ export default function Order({url, cart, removeFromCart, updateAmount}) {
                 <td>
                 <input ref={inputs[index]} style={{width: '60px'}} value={product.amount} onChange={e => changeAmount(e,product,index)} />
                 </td>
-                <td><a href="#" onClick={() => removeFromCart(product.tuotenro)}>Poista tuote ostoskorista</a></td>
+                <td><a href="#" onClick={() => removeFromCart(product)}>Poista tuote ostoskorista</a></td>
               </tr>
             )
             })}

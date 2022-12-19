@@ -11,15 +11,29 @@ export default function Products({ url, addToCart }) {
   let params = useParams();
 
   useEffect(() => {
-    axios.get(url + 'products/getproducts.php/' + params.categoryId)
+    let address = '';
+
+    if (params.searchPhrase === undefined) {
+      address = url + 'products/getproducts.php/' + params.categoryId;
+    } else {
+      address = url + 'products/search.php/' + params.searchPhrase;
+    }
+
+
+    axios.get(address)
       .then((response) => {
         const json = response.data;
-        setCategory(json.category);
-        setProducts(json.products);
-      }).catch(error => {
+        if (params.searchPhrase === undefined) {
+          setCategory(json.category);
+          setProducts(json.products)
+        } else {
+          setCategory(params.searchPhrase);
+          setProducts(json);
+        }
+      }) .catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
-  }, [params]);
+  }, [params])
 
   return (
     <section className="py-5 bg-light">
