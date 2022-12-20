@@ -49,7 +49,7 @@ export default function Order({url, cart, removeFromCart, updateAmount, empty}) 
     .then(() => {
       empty();
       setFinished(true);
-      console.log(json);
+      // console.log(json);
     }).catch(error => {
       alert(error.response === undefined ? error : error.response.data.error);
     });

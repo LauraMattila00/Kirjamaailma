@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Search from './pages/Search';
+//import Search from './pages/Search';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -66,6 +66,11 @@ function App() {
     localStorage.setItem('cart', JSON.stringify(modifiedCart));
   }
 
+  function empty() {
+    setCart([])
+    localStorage.removeItem('cart')
+  }
+
   return (
     <>
       <div className='container-fluid'>
@@ -75,7 +80,7 @@ function App() {
           <Route path='/' element={<Home categories={categories} />} />
           <Route path='/products/:categoryId' element={<Products url={URL} addToCart={addToCart} />} />
           <Route path='/tuotesivu/:productId' element={<Tuotesivu url={URL} addToCart={addToCart} />} />
-          <Route path='/order' element={<Order url={URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} />} />
+          <Route path='/order' element={<Order url={URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} empty={empty} />} />
           <Route path='*' element={<NotFound />} />
           <Route path='/login' element={<Login url={URL} />} />
           <Route path='/signup' element={<Signup url={URL} />} />
