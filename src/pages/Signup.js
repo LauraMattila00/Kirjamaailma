@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import '../components/signup.css'
 
 
 export default function Register({setUser}){
@@ -15,18 +16,18 @@ export default function Register({setUser}){
     //sucessful response set
 
 
-  axios.post(URL+"register.php", json, {withCredentials:true})
-  .then(resp=> setUser(username)
-  .catch(e=> console.log(e.message)))
+  axios.post("http://localhost/kirjamaailma/"+"register/register.php", json,{ headers: {},})
+  .then(resp=>setUser(resp.data))
+  .catch(e=> console.log(e.message))
   }
   return(
     <form>
       <label>Username:</label>
-      <input type="text"defaultValue={username}OnChange={e=>setUsername(e.target.value)}/><br></br>
+      <input type="text"defaultValue={username} onChange={e=>setUsername(e.target.value)}/><br></br>
       <label>Email:</label>
-      <input type="email" defaultValue={email}OnChange={e=>setEmail(e.target.value)}/><br></br>
+      <input type="email" defaultValue={email} onChange={e=>setEmail(e.target.value)}/><br></br>
       <label>Password:</label>
-      <input type="password" defaultValue={password}OnChange={e=>setPassword(e.target.value)}/><br></br>
+      <input type="password" defaultValue={password} onChange={e=>setPassword(e.target.value)}/><br></br>
       <button type="button" onClick={register}>Register</button>
     </form>
   )}

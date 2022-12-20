@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Search from './pages/Search';
+
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -65,6 +65,8 @@ function App() {
     localStorage.setItem('cart',JSON.stringify(modifiedCart));
   }
 
+  
+
   return (
     <>
       <div className='container-fluid'>
@@ -73,7 +75,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Home categories={categories}/>} />
           <Route path='/products/:categoryId' element={<Products url={URL} addToCart={addToCart} />} />
-          <Route path='/search/:searchPhrase' element={<Products url={URL} />} />
           <Route path='/tuotesivu/:productId' element={<Tuotesivu url={URL} addToCart={addToCart}/>} />
           <Route path='/order' element={<Order url={URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount}/>} />
           <Route path='*' element={<NotFound />} />  
