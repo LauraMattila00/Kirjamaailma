@@ -1,12 +1,21 @@
 import React, {useState,useEffect} from 'react';
 import uuid from 'react-uuid';
 import { createRef } from 'react';
+import axios from 'axios';
 
 // AJA KOODI: npm i react-uuid
 
-export default function Order({url, cart, removeFromCart, updateAmount}) {
+export default function Order({url, cart, removeFromCart, updateAmount, empty}) {
   const [inputs,_] = useState([]);
   const [inputIndex, setInputIndex] = useState(-1);
+
+  const [asnimi, setAsnimi] = useState('');
+  const [osoite, setOsoite] = useState('');
+  const [postinro, setPostinro] = useState('');
+  const [postitmp, setPostitmp] = useState('');
+  const [puhnro, setPuhnro] = useState('');
+
+  const [finished, setFinished] = useState(false);
 
   useEffect(() => {
     for (let i = 0;i < cart.length;i++) {
@@ -20,15 +29,41 @@ export default function Order({url, cart, removeFromCart, updateAmount}) {
     }
   },[cart])
 
+  function order(e){
+    e.preventDefault();
+
+    const json = JSON.stringify({
+      asnimi: asnimi,
+      osoite: osoite,
+      postinro: postinro,
+      postitmp: postitmp,
+      puhnro: puhnro,
+      cart: cart,
+    });
+    axios.post(url + 'order/save.php', json, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-type' : 'application/json'
+      }
+    })
+    .then(() => {
+      empty();
+      setFinished(true);
+      // console.log(json);
+    }).catch(error => {
+      alert(error.response === undefined ? error : error.response.data.error);
+    });
+
+  }
+
   function changeAmount(e, product, index) {
     updateAmount(e.target.value, product);
     setInputIndex(index);
   }
 
   let sum = 0;
-// Tilaajan tiedot <Form>  
-// updateAmount lisäys.
-
+// Tilaajan tiedot <Form>.  
+if (finished === false) {
   return (
     <div>
       <h3 className="header">Ostoskori</h3>
@@ -57,37 +92,40 @@ export default function Order({url, cart, removeFromCart, updateAmount}) {
           </tr>
         </tbody>
       </table>
-      <h3 className="header">Tilaus tiedot</h3>
-      <form onSubmit={Order}>
+      {cart.length > 0 &&
+      <>
+      <h3 className="header">Tilaajan tiedot</h3>
+      <form onSubmit={order}>
         <div className="form-group">
-          <label>Etunimi:</label>
-          <input className="form-control"/>
-        </div>
-        <div className="form-group">
-          <label>Sukunimi:</label>
-          <input className="form-control"/>
+          <label>Nimi:</label>
+          <input className="form-control" onChange={e => setAsnimi(e.target.value)}/>
         </div>
         <div className="form-group">
           <label>Osoite:</label>
-          <input className="form-control"/>
+          <input className="form-control" onChange={e => setOsoite(e.target.value)}/>
         </div>
         <div className="form-group">
           <label>Postinumero:</label>
-          <input className="form-control"/>
+          <input className="form-control" onChange={e => setPostinro(e.target.value)}/>
         </div>
         <div className="form-group">
           <label>Kaupunki:</label>
-          <input className="form-control"/>
+          <input className="form-control" onChange={e => setPostitmp(e.target.value)}/>
         </div>
         <div className="form-group">
           <label>Puhelinnumero:</label>
-          <input className="form-control"/>
+          <input className="form-control" onChange={e => setPuhnro(e.target.value)}/>
         </div>
         <div className="buttons">
           <button className="btn btn-primary">Tilaa</button>
         </div>
 
       </form>
+      </>
+    }
     </div>
   )
+} else {
+  return (<h3>Kiitos tilauksesta!</h3>);
+}
 }
