@@ -55,7 +55,7 @@ function Admin({ url }) {
                     id="input-trnimi"
                     onChange={handleChange}
                 />
-                <Button className="button" type="submit">Lisää</Button>
+                <Button className="button btn-outline-dark" type="submit">Lisää</Button>
             </Form>
             <Alert show={success} variant={"info"}>
                 Tuoteryhmän lisääminen onnistui!

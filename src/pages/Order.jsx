@@ -117,7 +117,7 @@ if (finished === false) {
           <input className="form-control" onChange={e => setPuhnro(e.target.value)}/>
         </div>
         <div className="buttons">
-          <button className="btn btn-primary">Tilaa</button>
+          <button className="btn btn-outline-dark">Tilaa</button>
         </div>
 
       </form>
