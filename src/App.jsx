@@ -66,6 +66,11 @@ function App() {
     localStorage.setItem('cart', JSON.stringify(modifiedCart));
   }
 
+  function empty() {
+    setCart([])
+    localStorage.removeItem('cart')
+  }
+
   return (
     <>
       <div className='container-fluid'>
